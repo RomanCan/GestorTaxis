@@ -3,7 +3,7 @@
 
 <div id="descripcion">
 	<div class="container">
-		<button class="btn btn-primary" @click="showModal()">Agregar+</button>
+		<button class="btn waves-effect waves-light modal-trigger" data-target="modaln"><i class="material-icons">add_circle</i></button>
 				<div>
             		<input type="text" placeholder="Escriba el nombre del empleado o las placas" v-model="buscar" class="form-control">
             	</div>
@@ -25,8 +25,9 @@
 						<td>@{{d.numero_pasajero}}</td>
 						<td>@{{d.activo}}</td> -->
 						<td>
-							<span class="btn btn-success glyphicon glyphicon-pencil" @click="editarD(d.id_descripcion)"></span>
-							<span class="btn btn-danger glyphicon glyphicon-trash" @click="eliminarD(d.id_descripcion)"></span>
+							<span class="btn waves-effect waves-light modal-trigger" data-target="modalu" @click="editarD(d.id_descripcion)"><i class="material-icons">create</i></span>
+              				<span class="btn waves-effect waves-light" @click="eliminarD(d.id_descripcion)"><i class="material-icons">delete</i></span>	
+							
 						</td>
 					</tr>
 				</tbody>
@@ -34,32 +35,42 @@
 		
         </div>
 		<!-- fin de la tabla -->
-		<!-- comienzo del modal -->
-
-		<div class="modal fade" tabindex="-1" role="dialog" id="add">
-          <div class="modal-dialog" role="document">
+		<!-- inicio del modal -->
+    <div class="modal" id="modalu">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true" @click="salir()">x</span></button>
-                <h4 class="modal-title" v-if="editar">Editar</h4>
-                 <h4 class="modal-title" v-if="!editar">Guardar</h4>
+                <h4 class="modal-title">Editar Informacion</h4>
               </div>
               <div class="modal-body">
-              	<input type="text" placeholder="Marca" v-model="marca" class="form-control">
-               <!--  <input type="text" placeholder="Placas" v-model="placas" class="form-control">
-                <input type="text" placeholder="activo" v-model="activo" class="form-control">
-                <input type="text" placeholder="Capacidad de pasajeros" v-model="numero_pasajero" class="form-control"> -->
+
+               <input type="text" placeholder="Marca" v-model="marca" class="form-control">
+
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn waves-effect waves-light modal-action modal-close" @click="actualizarD()">Actualizar</button>
+
+              </div>
+            </div>
+        </div>
+        <!-- fin del modal -->
+        <!-- inicio del modal -->
+    	<div class="modal" id="modaln">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Agregar Nuevo</h4>
+              </div>
+              <div class="modal-body" >
+
+               <input type="text" placeholder="Marca" v-model="marca" class="form-control">
+
               </div>
 
 
               <div class="modal-footer">
-                <button type="submit" class="btn btn-success" v-on:click="actualizarD()" v-if="editar">Actualizar</button>
-                <button type="submit" class="btn btn-success" v-on:click="agregarD()" v-if="!editar">Guardar</button>
-                <!-- <button type="submit" class="btn btn-success" @click="salir">Cancelar</button> -->
-
+                <button class="btn waves-effect waves-light modal-action modal-close" @click="agregarD()">Guardar</button>
               </div>
             </div>
-          </div>
         </div>
         <!-- fin del modal -->
 	</div>

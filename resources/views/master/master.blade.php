@@ -26,6 +26,7 @@
 
         <!-- Sweet Alert CSS -->
         <link rel="stylesheet" href="css/sweetalert.css">
+        <!-- <link rel="stylesheet" href="css/sweetalert2.css"> -->
 
         <!-- MaterialDark CSS -->
         <link rel="stylesheet" href="css/style.css">
@@ -57,7 +58,7 @@
 
                         <li class="active"><a href="{{url('taxis')}}"><i class="large material-icons">directions_bus</i><span> Taxis</span></a></li><br>
 
-                        <li class="active"><a href="{{url('descripcion')}}"><i class="large material-icons">description</i><span> Marcas</span></a></li><br>
+                        <li class="active"><a href="{{url('marcas')}}"><i class="large material-icons">description</i><span> Marcas</span></a></li><br>
 
                         <li class="active"><a href="{{url('destinos')}}"><i class="large material-icons">assignment_turned_in</i><span> Destinos</span></a></li><br>
 
@@ -202,6 +203,7 @@
         {{--  <script src="js/jquery-3.3.1.min.js"></script>  --}}
         {{-- <!-- Sweet Alert JS --> --}}
         <script src="js/sweetalert.min.js"></script>
+        <!-- <script src="js/sweetalert2.min.js"></script> -->
         {{-- <!-- jQuery --> --}}
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
         <script>window.jQuery || document.write('<script src="js/jquery-2.2.0.min.js"><\/script>')</script>

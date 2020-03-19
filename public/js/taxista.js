@@ -99,32 +99,45 @@ new Vue({
 				this.licencia='';
 		},
 		eliminarE:function(id){
-
-            Swal({
-                title: "Are you sure?",
-              text: "You will not be able to recover this imaginary file!",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes, delete it!"
-            //   closeOnConfirm: false
-            }).then((respuesta) => {
-				if (respuesta.value){
-				  	this.$http.delete(urlE +'/'+id)
-				  	.then(response=>{
-                        swal({
-                            type: "success",
-                            title: "Guardado Exitosamente",
-                            timer: 1200,
-                            showConfirmButton: false
-                        });
+			var e = confirm('¿Estas seguro de eliminarlo?');
+			if (e == true){
+				this.$http.delete(urlE +'/'+id)
+			  	.then(response=>{
+				  		swal({
+		                    type: "success",
+		                    title: "Eliminado Exitosamente",
+		                    timer: 1200,
+		                    showConfirmButton: false
+		                });
 					  	this.getEmpleados();
-				  	}).catch(function(json){
-				  		console.log(json);
-				  	});
-
-				}
-			});
+				    });
+			}
+			// Swal({
+			//   title: "No podras revertir este cambio!,¿Estas seguro?",
+			//   icon: 'warning',
+			//   showCancelButton: true,
+			//   showConfirmButton: true,
+			//   confirmButtonColor: '#3085d6',
+			//   cancelButtonColor: '#d33',
+			//   confirmButtonText: 'Si,borralo',
+			//   cancelButtonText:'No,cancelar',
+			// }).then((result) => {
+			//   if (result.value) {
+			//   	this.$http.delete(urlE +'/'+id)
+			//   	.then(response=>{
+			// 	  		Swal(
+				  		
+			// 	      	'Ha sido eliminado exitosamente',
+			// 	      	'',
+			// 	      	'success'
+			// 	    );
+			// 	  	this.getTaxis();
+			//   	}).catch(function(json){
+			//   		console.log(json);
+			//   	});
+			
+			//   }
+			// })
 		},
 		salir:function(){
 			this.editar=false;

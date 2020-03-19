@@ -86,9 +86,9 @@ new Vue({
 				this.getPasaje();
 			});
 			$('#add_p').modal('hide');
-			Swal.fire({
+			swal({
 				  position: 'center',
-				  type: 'success',
+				  icon: 'success',
 				  title: 'Guardado exitosamente',
 				  showConfirmButton: false,
 				  timer: 1500
@@ -101,35 +101,48 @@ new Vue({
 			
 		},
 		eliminarP:function(id){
-			Swal.fire({
-			  title: "No podras revertir este cambio!,¿Estas seguro?",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Si,borralo',
-			  cancelButtonText:'No,cancelar',
-			}).then((result) => {
-			  if (result.value) {
-			  	this.$http.delete(urlP +'/'+id)
-			  	.then(response=>{
-				  		Swal.fire(
+			var p = confirm('¿Esta seguro de eliminarlo');
+			if (p == true){
+				this.$http.delete(urlP+'/'+id)
+				.then(json=>{
+						swal({
+		                    type: "success",
+		                    title: "Eliminado Exitosamente",
+		                    timer: 1200,
+		                    showConfirmButton: false
+		                });
+					this.getPasaje();
+				})
+			}
+			// swal({
+			//   title: "No podras revertir este cambio!,¿Estas seguro?",
+			//   icon: 'warning',
+			//   showCancelButton: true,
+			//   confirmButtonColor: '#3085d6',
+			//   cancelButtonColor: '#d33',
+			//   confirmButtonText: 'Si,borralo',
+			//   cancelButtonText:'No,cancelar',
+			// }).then((result) => {
+			//   if (result.value) {
+			//   	this.$http.delete(urlP +'/'+id)
+			//   	.then(response=>{
+			// 	  		swal(
 				  		
-				      	'Ha sido eliminado exitosamente',
-				      	'',
-				      	'success'
-				    )
-				  	this.getPasaje();
-			  	}).catch(function(json){
-			  		console.log(json);
-			  	})
+			// 	      	'Ha sido eliminado exitosamente',
+			// 	      	'',
+			// 	      	'success'
+			// 	    )
+			// 	  	this.getPasaje();
+			//   	}).catch(function(json){
+			//   		console.log(json);
+			//   	})
 			    
 			 //    .then(function(json){
 				// 	this.getArticulos();
 				// });
 			
-			  }
-			})
+			  // }
+			// })
 				
 				
 		},
@@ -140,7 +153,7 @@ new Vue({
 			this.id_destino='';
 			this.fecha='';
 			this.hora='';
-				$('#add_empleados').modal('hide');
+				
 		}
 	},
 	computed:{

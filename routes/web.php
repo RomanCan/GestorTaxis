@@ -24,7 +24,7 @@ Route::apiResource('apiUsuario','ApiUsuarioController');
 Route::view('/','login');
 Route::view('taxistas','admin.taxista');
 Route::view('taxis','admin.taxis');
-Route::view('descripcion','admin.descripcion');
+Route::view('marcas','admin.descripcion');
 Route::view('destinos','admin.destino');
 Route::view('pasajes_fijos','admin.pasaje_fijo');
 Route::view('perfil','admin.perfil');

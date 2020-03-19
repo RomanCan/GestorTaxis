@@ -27,9 +27,7 @@ new Vue({
 				console.log(json);
 			});
 		},
-		showModal:function(){
-			$('#add').modal('show');
-		},
+		
 		agregarD:function(){
 			var d={
 				marca:this.marca
@@ -39,17 +37,13 @@ new Vue({
 			};
 			this.$http.post(urlV,d)
 			.then(function(json){
-				$('#add').modal('hide');
-				Swal.fire({
-				  position: 'center',
-				  type: 'success',
-				  title: 'Guardado exitosamente',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
+				swal({
+                    type: "success",
+                    title: "Guardado Exitosamente",
+                    timer: 1200,
+                    showConfirmButton: false
+                });
 				this.getDescripcion();
-				
-				
 			});
 			this.marca="";
 			// this.placas="";
@@ -66,7 +60,7 @@ new Vue({
 				// this.numero_pasajero=json.data.numero_pasajero
 
 				this.did=json.data.id_descripcion
-				$('#add').modal('show');
+				
 			});
 		},
 		actualizarD:function(){
@@ -78,49 +72,57 @@ new Vue({
 			};
 			this.$http.patch(urlV+'/'+this.did,d)
 			.then(function(json){
+				swal({
+                    type: "success",
+                    title: "Guardado Exitosamente",
+                    timer: 1200,
+                    showConfirmButton: false
+                });
 				this.getDescripcion();
 			}).catch(function(json){
 				console.log(json);
 			});
 			this.editar=false;
-			$('#add').modal('hide');
-			Swal.fire({
-				  position: 'center',
-				  type: 'success',
-				  title: 'Guardado exitosamente',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
-				this.marca="";
+			this.marca="";
 				// this.placas="";
 				// this.activo="";
 				// this.numero_pasajero="";
 		},
 		eliminarD:function(id){
-			Swal.fire({
-			  title: "No podras revertir este cambio!,¿Estas seguro?",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Si,borralo',
-			  cancelButtonText:'No,cancelar',
-			}).then((result) => {
-				 if (result.value) {
-				  	this.$http.delete(urlV +'/'+id)
+			var a =confirm('¿Estas seguro de eliminarlo?');
+			
+			if (a == true){
+				this.$http.delete(urlV +'/'+id)
 				  	.then(response=>{
-					  		Swal.fire(
-					  		
-					      	'Ha sido eliminado exitosamente',
-					      	'',
-					      	'success'
-					    )
+				  		// swal({
+		      //               type: "success",
+		      //               title: "Eliminado Exitosamente",
+		      //               timer: 1200,
+		      //               showConfirmButton: false
+		      //           });
 					  	this.getDescripcion();
-				  	}).catch(function(json){
-				  		console.log(json);
-				  	})
-				}
-			})
+				  	});
+			}else{
+				alert('El vehiculo aun esta en uso')
+			}
+			// Swal({
+			//   title: "No podras revertir este cambio!,¿Estas seguro?",
+			//   icon: 'warning',
+			//   showCancelButton: true,
+			//   confirmButtonColor: '#3085d6',
+			//   cancelButtonColor: '#d33',
+			//   confirmButtonText: 'Si,borralo',
+			//   cancelButtonText:'No,cancelar',
+			// }).then((result) => {
+			// 	 if (result.value) {
+			// 	  	this.$http.delete(urlV +'/'+id)
+			// 	  	.then(response=>{
+			// 		  	this.getDescripcion();
+			// 	  	}).catch(function(json){
+			// 	  		console.log(json);
+			// 	  	})
+			// 	}
+			// })
 		},
 		salir:function(){
 			this.editar=false;
@@ -128,7 +130,6 @@ new Vue({
 				// this.placas="";
 				// this.activo="";
 				// this.numero_pasajero="";
-			$('#add').modal('hide');
 
 		},
 

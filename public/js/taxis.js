@@ -54,9 +54,6 @@ new Vue({
 				this.descripciones=json.data;
 			});
 		},
-		showModal:function(){
-			$('#add_t').modal('show');
-		},
 		agregarT:function(){
 			var t={
 				// id_taxi:this.id_taxi,
@@ -71,14 +68,13 @@ new Vue({
 			this.$http.post(urlT,t)
 			.then(function(response){
 				this.getTaxis();
-				Swal.fire({
+				Swal({
 				  position: 'center',
-				  type: 'success',
+				  icon: 'success',
 				  title: 'Guardado exitosamente',
 				  showConfirmButton: false,
 				  timer: 1500
 				})
-				$('#add_t').modal('hide');
 				
 			});
 				
@@ -97,8 +93,6 @@ new Vue({
 				this.numero_pasajero=response.data.numero_pasajero
 				this.activo=response.data.activo
 				this.tid=response.data.id_taxi
-
-				$('#add_t').modal('show');
 			});
 
 		},
@@ -115,20 +109,19 @@ new Vue({
 			};
 			this.$http.patch(urlT+'/'+this.tid,t)
 			.then(function(json){
-
+				Swal({
+				  position: 'center',
+				  icon: 'success',
+				  title: 'Guardado exitosamente',
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+				window.reload();
 				this.getTaxis();
 			}).catch(function(json){
 				console.log(json);
 			});
 			this.editar=false;
-			$('#add_t').modal('hide');
-			Swal.fire({
-				  position: 'center',
-				  type: 'success',
-				  title: 'Guardado exitosamente',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
 				this.id_taxi='';
 				this.id_taxista='';
 				this.id_descripcion='';
@@ -139,31 +132,45 @@ new Vue({
 				this.activo='';
 		},
 		eliminarT:function(id){
-			Swal.fire({
-			  title: "No podras revertir este cambio!,¿Estas seguro?",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Si,borralo',
-			  cancelButtonText:'No,cancelar',
-			}).then((result) => {
-			  if (result.value) {
-			  	this.$http.delete(urlT +'/'+id)
+
+			var t = confirm('¿Estas seguro de eliminarlo?');
+			if (t == true){
+				this.$http.delete(urlT +'/'+id)
 			  	.then(response=>{
-				  		Swal.fire(
+					swal({
+		                    type: "success",
+		                    title: "Eliminado Exitosamente",
+		                    timer: 1200,
+		                    showConfirmButton: false
+		                });
+					  	this.getTaxis();
+				})
+			}
+			// Swal.fire({
+			//   title: "No podras revertir este cambio!,¿Estas seguro?",
+			//   type: 'warning',
+			//   showCancelButton: true,
+			//   confirmButtonColor: '#3085d6',
+			//   cancelButtonColor: '#d33',
+			//   confirmButtonText: 'Si,borralo',
+			//   cancelButtonText:'No,cancelar',
+			// }).then((result) => {
+			//   if (result.value) {
+			//   	this.$http.delete(urlT +'/'+id)
+			//   	.then(response=>{
+			// 	  		Swal.fire(
 				  		
-				      	'Ha sido eliminado exitosamente',
-				      	'',
-				      	'success'
-				    )
-				  	this.getTaxis();
-			  	}).catch(function(json){
-			  		console.log(json);
-			  	});
+			// 	      	'Ha sido eliminado exitosamente',
+			// 	      	'',
+			// 	      	'success'
+			// 	    )
+			// 	  	this.getTaxis();
+			//   	}).catch(function(json){
+			//   		console.log(json);
+			//   	});
 			
-			  }
-			})
+			//   }
+			// })
 				
 				
 		},

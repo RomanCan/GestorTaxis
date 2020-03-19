@@ -38,10 +38,9 @@ new Vue({
 			
 			this.$http.post(urlD,d)
 			.then(function(response){
-				$('#add_d').modal('hide');
-				Swal.fire({
+				swal({
 				  position: 'center',
-				  type: 'success',
+				  icon: 'success',
 				  title: 'Guardado exitosamente',
 				  showConfirmButton: false,
 				  timer: 1500
@@ -73,7 +72,7 @@ new Vue({
 			};
 			this.$http.patch(urlD+'/'+this.did,dest)
 			.then(function(json){
-				Swal.fire({
+				swal({
 				  position: 'center',
 				  type: 'success',
 				  title: 'Guardado exitosamente',
@@ -84,49 +83,29 @@ new Vue({
 				
 			});
 			this.editar=false;
-			$('#add_d').modal('hide');
 			this.nombre='';
 			this.precio='';
 		},
 		eliminarD:function(id){
-			Swal.fire({
-			  title: "No podras revertir este cambio!,¿Estas seguro?",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Si,borralo',
-			  cancelButtonText:'No,cancelar',
-			}).then((result) => {
-			  if (result.value) {
-			  	this.$http.delete(urlD +'/'+id)
-			  	.then(response=>{
-				  		Swal.fire(
-				  		
-				      	'Ha sido eliminado exitosamente',
-				      	'',
-				      	'success'
-				    )
-				  	this.getDestinos();
-			  	}).catch(function(json){
-			  		console.log(json);
-			  	})
-			    
-			 //    .then(function(json){
-				// 	this.getArticulos();
-				// });
-			
-			  }
-			})
-				
-				
+			var d = confirm('¿Estas seguro de borrarlo?');
+			if (d == true){
+				this.$http.delete(urlD+'/'+id)
+				.then(json =>{
+					swal({
+		                    type: "success",
+		                    title: "Eliminado Exitosamente",
+		                    timer: 1200,
+		                    showConfirmButton: false
+		                });
+					this.getDestinos();
+				})
+			}
 		},
 		salir:function(){
 			this.editar=false;
 			this.nombre = '';
 			this.costo='';
 			this.cantidad='';
-				$('#add_empleados').modal('hide');
 		}
 
 	},

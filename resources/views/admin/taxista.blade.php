@@ -18,7 +18,7 @@
 					<th>Opciones</th>
 				</thead>
 				<tbody>
-					<tr v-for="(e,index) in empleados">
+					<tr v-for="(e,index) in filtro">
 						<td>@{{index+1}}</td>
 						<td>@{{e.nombre}}</td>
 						<td>@{{e.apellido_p}}</td>
@@ -26,6 +26,7 @@
 						<td>@{{e.edad}}</td>
 						<td>@{{e.curp}}</td>
 						<td>@{{e.licencia}}</td>
+
 						<td >
 							<span class="btn waves-effect waves-light modal-trigger" data-target="modalu" @click="editarE(e.id_taxista)"><i class="material-icons">create</i></span>
 							<span class="btn waves-effect waves-light" @click="eliminarE(e.id_taxista)"><i class="material-icons">delete</i></span>

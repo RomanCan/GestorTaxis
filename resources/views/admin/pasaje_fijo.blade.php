@@ -3,7 +3,7 @@
 	
 <div id="pasaje">
 	<div class="container">
-		<button class="btn btn-primary" @click="showModal()">Agregar+</button>
+		<button class="btn waves-effect waves-light modal-trigger" data-target="modaln"><i class="material-icons">add_circle</i></button>
 				<div>
             		<input type="text" placeholder="Escriba el nombre del empleado o las placas" v-model="buscar" class="form-control">
             	</div>
@@ -25,8 +25,10 @@
 						<td>@{{p.fecha}}</td>		
 						<td>@{{p.hora}}</td>					
 						<td>
-							<span class="btn btn-success glyphicon glyphicon-pencil" @click="editarP(p.id_pasaje)"></span>
-							<span class="btn btn-danger glyphicon glyphicon-trash" @click="eliminarP(p.id_pasaje)"></span>
+							<span class="btn waves-effect waves-light modal-trigger" data-target="modalu" @click="editarP(p.id_pasaje)"><i class="material-icons">create</i></span>
+							<span class="btn waves-effect waves-light" @click="eliminarP(p.id_pasaje)"><i class="material-icons">delete</i></span>
+							<!-- <span class="btn btn-success glyphicon glyphicon-pencil" @click="editarP(p.id_pasaje)"></span>
+							<span class="btn btn-danger glyphicon glyphicon-trash" @click="eliminarP(p.id_pasaje)"></span> -->
 						</td>
 					</tr>
 				</tbody>
@@ -35,18 +37,14 @@
 		
 		<!-- fin de la tabla -->
 		<!-- inicio del modal -->
-
-		<div class="modal fade" tabindex="-1" role="dialog" id="add_p">
-          <div class="modal-dialog" role="document">
+    	<div class="modal" id="modalu">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true" @click="salir()">x</span></button>
-                <h4 class="modal-title" v-if="editar">Editar</h4>
-                 <h4 class="modal-title" v-if="!editar">Guardar</h4>
+                <h4 class="modal-title">Editar Informacion</h4>
               </div>
               <div class="modal-body">
-              	<!-- <input type="text" placeholder="N" v-model="id_destino" class="form-control"> -->
-                <input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+
+               <input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
                 <select class="form-control" v-model="id_destino">
                 	<option disabled="Selecciona el lugar"></option>
                 	<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
@@ -54,18 +52,42 @@
                 <input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
                 <input type="time" placeholder="Hora" v-model="hora" class="form-control">
 
-
               </div>
+
               <div class="modal-footer">
-                <button type="submit" class="btn btn-success" v-on:click="actualizarP()" v-if="editar">Actualizar</button>
-                <button type="submit" class="btn btn-success" v-on:click="agregarP()" v-if="!editar">Guardar</button>
-                <!-- <button type="submit" class="btn btn-success" @click="salir">Cancelar</button> -->
+                <button class="btn waves-effect waves-light modal-action modal-close" @click="actualizarP()">Actualizar</button>
 
               </div>
             </div>
-          </div>
         </div>
-		<!-- fin del modal -->
+        <!-- fin del modal -->
+        <!-- inicio del modal -->
+    	<div class="modal" id="modaln">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Agregar Nuevo</h4>
+              </div>
+              <div class="modal-body" >
+
+               <input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+                <select class="form-control" v-model="id_destino">
+                	<option disabled="Selecciona el lugar"></option>
+                	<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
+                </select>
+                <input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
+                <input type="time" placeholder="Hora" v-model="hora" class="form-control">
+
+              </div>
+
+
+              <div class="modal-footer">
+                <button class="btn waves-effect waves-light modal-action modal-close" @click="agregarP()">Guardar</button>
+              </div>
+            </div>
+        </div>
+        <!-- fin del modal -->
+
+
 	</div>
 	<!-- fin del container -->
 </div>
