@@ -63,6 +63,9 @@
                         <li class="active"><a href="{{url('destinos')}}"><i class="large material-icons">assignment_turned_in</i><span> Destinos</span></a></li><br>
 
                         <li class="active"><a href="{{url('pasajes_fijos')}}"><i class="large material-icons">assignment_ind</i><span> Pasajes Fijos</span></a></li><br>
+                        
+                        <li class="active"><a href="{{url('logout')}}" data-tooltip="Logout" ><i class="large material-icons">keyboard_tab</i><span> Salir</span></a></li><br>
+
                         {{-- <!-- <li class="NavLateralDivider"></li>
                         <li>
                             <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-language-css3 zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> CSS</a>
@@ -86,7 +89,7 @@
                     <li class="btn-MobileMenu ShowHideMenu"><a href="#" class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Menu"><i class="zmdi zmdi-more-vert"></i></a></li>
                     <li><figure><img src="assets/img/user.png" alt="UserImage"></figure></li>
                     <li style="padding:0 5px;">{{Session::get('usuario')}}</li>
-                    <li><a href="{{url('logout')}}" class="tooltipped waves-effect waves-light btn-ExitSystem" data-position="bottom" data-delay="50" data-tooltip="Logout"><i class="zmdi zmdi-power"></i></a></li>
+                    <!-- <li><a href="{{url('logout')}}" class="tooltipped waves-effect waves-light btn-ExitSystem" data-position="bottom" data-delay="50" data-tooltip="Logout"><i class="zmdi zmdi-power"></i></a></li> -->
                     {{-- <!-- <li><a href="#" class="tooltipped waves-effect waves-light btn-Search" data-position="bottom" data-delay="50" data-tooltip="Search"><i class="zmdi zmdi-search"></i></a></li> -->
                     <!-- <li>
                         <a href="#" class="tooltipped waves-effect waves-light btn-Notification" data-position="bottom" data-delay="50" data-tooltip="Notifications">
