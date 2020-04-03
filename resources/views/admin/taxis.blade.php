@@ -44,19 +44,32 @@
                 <h4 class="modal-title">Editar Informacion</h4>
               </div>
               <div class="modal-body">
-
-               <select class="" v-model="id_taxista">
-                  <option disabled="Elija un taxista"></option>
-                  <option v-for="t in taxistas" v-bind:value="t.id_taxista">@{{t.nombre}}</option>
-                </select>
-                <select class="" v-model="id_descripcion">
-                  <option disabled="Elija una marca"></option>
-                  <option v-for="i in descripciones" v-bind:value="i.id_descripcion">@{{i.marca}}</option>
-                </select>
-                <input class="" type="text" placeholder="Numero de Taxi" v-model="no_taxi">
-                <input class="" type="text" placeholder="Placas" v-model="placa">
-                <input class="" type="text" placeholder="Capacidad de Pasajeros" v-model="numero_pasajero">
-                <input class="" type="number" placeholder="0 o 1" v-model="activo">
+                <div class="row">
+                  <div class="col s6 input-field">
+                    <div>
+                      <label>Seleccione un taxista:</label>
+                      <select class="browser-default" v-model="id_taxista">
+                        <option disabled="Elija un taxista"></option>
+                        <option v-for="t in taxistas" v-bind:value="t.id_taxista">@{{t.nombre}}</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label>No. Taxi:</label><input class="" type="text" placeholder="Numero de Taxi" v-model="no_taxi">
+                    </div>
+                    <div>
+                      <label>Seleccione la marca:</label>
+                      <select class="browser-default" v-model="id_descripcion">
+                        <option disabled="Elija una marca"></option>
+                        <option v-for="i in descripciones" v-bind:value="i.id_descripcion">@{{i.marca}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <label>Placas</label><input class="" type="text" placeholder="Placas" v-model="placa">
+                    <label>Capacidad de pasajeros:</label><input class="" type="text" placeholder="Capacidad de Pasajeros" v-model="numero_pasajero">
+                    <label>se encuentra activo?</label><input class="" type="number" placeholder="0 o 1" v-model="activo">
+                  </div>
+                </div>
               </div>
 
 
@@ -79,21 +92,35 @@
               </div>
               <div class="modal-body" >
 
-                <select class="dropdown-content select-dropdown" v-model="id_taxista" id="dropdown1">
-                  <option disabled="Elija un taxista"></option>
-                  <option v-for="t in taxistas" v-bind:value="t.id_taxista">@{{t.nombre}}</option>
-                </select>
-                <select class="dropdown-content select-dropdown" v-model="id_descripcion" id="dropdown1">
-                  <option disabled="Elija una marca"></option>
-                  <option v-for="i in descripciones" v-bind:value="i.id_descripcion">@{{i.marca}}</option>
-                </select>
-                <input class="" type="text" placeholder="Numero de Taxi" v-model="no_taxi">
-                <input class="" type="text" placeholder="Placas" v-model="placa">
-                <input class="" type="text" placeholder="Capacidad de Pasajeros" v-model="numero_pasajero">
-                <input class="" type="number" placeholder="0 o 1" v-model="activo">
+                <div class="row">
+                  <div class="col s6 input-field">
+                    <div>
+                      <label>Seleccione un taxista:</label>
+                      <select class="browser-default" v-model="id_taxista">
+                        <option disabled="Elija un taxista" class="active"></option>
+                        <option v-for="t in taxistas" v-bind:value="t.id_taxista">@{{t.nombre}}</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label>No. Taxi:</label><input class="" type="text" placeholder="Numero de Taxi" v-model="no_taxi">
+                    </div>
+                    <div>
+                      <label>Seleccione la marca:</label>
+                      <select class="browser-default" v-model="id_descripcion">
+                        <option disabled="Elija una marca"></option>
+                        <option v-for="i in descripciones" v-bind:value="i.id_descripcion">@{{i.marca}}</option>
+                      </select>
+                    </div>
+                    
+                  </div>
+                  <div class="col s6">
+                    <label>Placas</label><input class="" type="text" placeholder="Placas" v-model="placa">
+                    <label>Capacidad de pasajeros:</label><input class="" type="text" placeholder="Capacidad de Pasajeros" v-model="numero_pasajero">
+                    <label>se encuentra activo?</label><input class="" type="number" placeholder="0 o 1" v-model="activo">
+                  </div>
+                </div>
+
               </div>
-
-
               <div class="modal-footer">
                 <button class="btn waves-effect waves-light modal-action modal-close" @click="agregarT()">Guardar</button>
               </div>
@@ -106,26 +133,13 @@
 
 @endsection
 @push('scripts')
-	<!-- <script> -->
-   <!-- $(document).ready(function () {
-        $('.modal').modal();
-        $('select').formSelect();
-        $('#select1').formSelect();
-        $('#select2').formSelect();
-        $('.select3').formSelect();
-        $('.tooltipped').tooltip();
-        $('.tooltipped2').tooltip();
-    }); --> 
-  <!--  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
-  }); -->
-
-  <!-- Or with jQuery -->
-
-  <!-- $('.dropdown-trigger').dropdown(); -->
-  <!-- </script> -->
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+    });
+  </script>
   
-	<script src="js/taxis.js"></script>
+	<script src="js/admin/taxis.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

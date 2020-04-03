@@ -24,7 +24,8 @@
               <td>@{{p.apellido_m}}</td>
               <td>@{{p.telefono}}</td>
               <td>
-                <button class="btn waves-effect waves-light modal-trigger" @click="editarU(p.id_usuario)" data-target="modale"><i class="material-icons">create</i></button>
+                <button class="btn waves-effect waves-light modal-trigger" @click="editarU(p.id_usuario)"
+                 data-target="modale"><i class="material-icons">create</i></button>
 
               </td>
             </tr>
@@ -41,13 +42,18 @@
                 <h4 class="modal-title" >Editar Informacion Personal</h4>
               </div>
               <div class="modal-body">
-              	<input type="text" placeholder="Nombre de Usuario" v-model="usuario" class="form-control">
-              	<input type="text" placeholder="Contraseña" v-model="contrasenia" class="form-control">
-              	<input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
-                <input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
-                <input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
-                <input type="number" placeholder="Telefono" v-model="telefono" class="form-control">
-
+                <div class="row">
+                  <div class="col s6">
+                    <label>Nombre de usuario:</label><input type="text" placeholder="Nombre de Usuario" v-model="usuario" class="form-control">
+                    <label>Contraseña:</label><input type="text" placeholder="Contraseña" v-model="contrasenia" class="form-control">
+                    <label>Telefono:</label><input type="number" placeholder="Telefono" v-model="telefono" class="form-control">
+                  </div>
+                  <div class="col s6">
+                    <label>Nombre:</label><input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+                    <label>Apellido paterno:</label><input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
+                    <label>Apellido materno:</label><input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button class="btn btn-success modal-action modal-close" @click="actualizarU()">Actualizar</button>
@@ -63,6 +69,6 @@
 @endsection
 
 @push('scripts')
-	<script src="js/usuario.js"></script>
+	<script src="js/admin/usuario.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

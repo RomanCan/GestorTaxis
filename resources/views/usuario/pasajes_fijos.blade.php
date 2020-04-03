@@ -76,6 +76,6 @@
 
 @endsection
 @push('scripts')
-	<script src="js/pasaje.js"></script>
+	<script src="js/usuario/pasaje.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

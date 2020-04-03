@@ -64,6 +64,6 @@
 @endsection
 
 @push('scripts')
-	<script src="js/usuario.js"></script>
+	<script src="js/usuario/usuario.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

@@ -26,6 +26,6 @@
 
 @endsection
 @push('scripts')
-	<script src="js/detalleregistro.js"></script>
+	<script src="js/admin/detalleregistro.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

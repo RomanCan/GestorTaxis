@@ -5,7 +5,7 @@
 	<div class="container">
 		<button class="btn waves-effect waves-light modal-trigger" data-target="modaln"><i class="material-icons">add_circle</i></button>
 				<div>
-            		<input type="text" placeholder="Escriba el nombre del empleado o las placas" v-model="buscar" class="form-control">
+            		<input type="text" placeholder="Escriba el nombre de la marca" v-model="buscar" class="form-control">
             	</div>
         <div class="table-responsive">
 	        <table class="table table-bordered table-striped">
@@ -78,6 +78,6 @@
 
 @endsection
 @push('scripts')
-	<script src="js/descripcion.js"></script>
+	<script src="js/admin/descripcion.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

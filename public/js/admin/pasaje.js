@@ -38,9 +38,6 @@ new Vue({
 				this.destinos=json.data;
 			});
 		},
-		showModal:function(){
-			$('#add_p').modal('show');
-		},
 		agregarP:function(){
 			var p={
 				nombre:this.nombre,
@@ -50,14 +47,12 @@ new Vue({
 			};
 			this.$http.post(urlP,p)
 			.then(function(json){
-				$('#add_p').modal('hide');
-				Swal.fire({
-				  position: 'center',
-				  type: 'success',
-				  title: 'Guardado exitosamente',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
+				swal({
+                    type: "success",
+                    title: "Guardado Exitosamente",
+                    timer: 1200,
+                    showConfirmButton: false
+                });
 				this.getPasaje();
 				
 			});
@@ -71,7 +66,6 @@ new Vue({
 				this.fecha=json.data.fecha
 				this.hora=json.data.hora
 				this.pid=json.data.id_pasaje
-				$('#add_p').modal('show');
 			});
 		},
 		actualizarP:function(){
@@ -85,14 +79,12 @@ new Vue({
 			.then(function(json){
 				this.getPasaje();
 			});
-			$('#add_p').modal('hide');
 			swal({
-				  position: 'center',
-				  icon: 'success',
-				  title: 'Guardado exitosamente',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
+				type: "success",
+				title: "Guardado Exitosamente",
+				timer: 1200,
+				showConfirmButton: false
+			});
 			this.editar=false;
 			this.nombre='';
 			this.id_destino='';

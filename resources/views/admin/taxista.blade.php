@@ -43,12 +43,20 @@
                 <h4 class="modal-title">Editar Informacion</h4>
               </div>
               <div class="modal-body">
-              	<input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
-                <input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
-                <input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
-                <input type="number" placeholder="Edad" v-model="edad" class="form-control">
-                <input type="text" placeholder="curp" v-model="curp" class="form-control">
-                <input type="text" placeholder="0 o 1" v-model="licencia" class="form-control">
+			  	<div class="row">
+					<div class="col s6">
+						<label>Nombre:</label><input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+                		<label>Apellido paterno:</label><input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
+                		<label>Apellido materno:</label><input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
+					</div>
+					<div class="col s6">
+						<label>Edad:</label><input type="number" placeholder="Edad" v-model="edad" class="form-control">
+               			<label>Curp:</label><input type="text" placeholder="curp" v-model="curp" class="form-control">
+                		<label>Con licencia?</label><input type="text" placeholder="0 o 1" v-model="licencia" class="form-control">
+					</div>
+				</div>
+              	
+                
               </div>
 
 
@@ -70,12 +78,18 @@
                 <h4 class="modal-title">Agregar Nuevo</h4>
               </div>
               <div class="modal-body">
-              	<input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
-                <input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
-                <input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
-                <input type="number" placeholder="Edad" v-model="edad" class="form-control">
-                <input type="text" placeholder="curp" v-model="curp" class="form-control">
-                <input type="text" placeholder="0 o 1" v-model="licencia" class="form-control">
+			  	<div class="row">
+					<div class="col s6">
+						<label>Nombre:</label><input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+                		<label>Apellido paterno:</label><input type="text" placeholder="Apellido Paterno" v-model="apellido_p" class="form-control">
+                		<label>Apellido materno:</label><input type="text" placeholder="Apellido Materno" v-model="apellido_m" class="form-control">
+					</div>
+					<div class="col s6">
+						<label>Edad:</label><input type="number" placeholder="Edad" v-model="edad" class="form-control">
+               			<label>Curp:</label><input type="text" placeholder="curp" v-model="curp" class="form-control">
+                		<label>Con licencia?</label><input type="text" placeholder="0 o 1" v-model="licencia" class="form-control">
+					</div>
+				</div>
               </div>
 
 
@@ -93,6 +107,6 @@
 
 @endsection
 @push('scripts')
-	<script src="js/taxista.js"></script>
+	<script src="js/admin/taxista.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

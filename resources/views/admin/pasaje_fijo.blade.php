@@ -5,7 +5,7 @@
 	<div class="container">
 		<button class="btn waves-effect waves-light modal-trigger" data-target="modaln"><i class="material-icons">add_circle</i></button>
 				<div>
-            		<input type="text" placeholder="Escriba el nombre del empleado o las placas" v-model="buscar" class="form-control">
+            		<input type="text" placeholder="Escriba el nombre del cliente" v-model="buscar" class="form-control">
             	</div>
         <div class="table-responsive">
         	<table class="table table-bordered table-striped">
@@ -44,13 +44,24 @@
               </div>
               <div class="modal-body">
 
-               <input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
-                <select class="form-control" v-model="id_destino">
-                	<option disabled="Selecciona el lugar"></option>
-                	<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
-                </select>
-                <input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
-                <input type="time" placeholder="Hora" v-model="hora" class="form-control">
+			  	<div class="row">
+					<div class="col s6 input-field">
+						<div>
+							<label>Nombre:</label><input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+						</div>
+						<div>
+							<label>Destino:</label>
+							<select class="browser-default" v-model="id_destino">
+								<option disabled="Selecciona el lugar"></option>
+								<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
+							</select>
+						</div>
+					</div>  
+					<div class="col s6 input-field">
+						<label>Fecha:</label><input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
+                		<label>Hora:</label><input type="time" placeholder="Hora" v-model="hora" class="form-control">
+					</div>  
+				</div>
 
               </div>
 
@@ -69,13 +80,32 @@
               </div>
               <div class="modal-body" >
 
-               <input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
-                <select class="form-control" v-model="id_destino">
-                	<option disabled="Selecciona el lugar"></option>
-                	<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
-                </select>
-                <input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
-                <input type="time" placeholder="Hora" v-model="hora" class="form-control">
+               
+			  	<div class="row">
+					<div class="col s6 input-field">
+						<div>
+							<label>Nombre:</label><input type="text" placeholder="Nombre" v-model="nombre" class="form-control">
+						</div>
+						<div>
+							<label>Destino:</label>
+							<select class="browser-default" v-model="id_destino">
+								<option disabled="Selecciona el lugar"></option>
+								<option v-for="d in destinos" v-bind:value="d.id_destino">@{{d.nombre}}</option>
+							</select>
+						</div>
+					</div>  
+					<div class="col s6 input-field">
+						<div>
+							<label>Fecha:</label>
+							<input type="date" placeholder="Fecha" v-model="fecha" class="form-control">
+						</div>
+						<div>
+							<label>Hora:</label>
+							<input type="time" placeholder="Hora" v-model="hora" class="form-control">
+						</div>
+                		
+					</div>  
+				</div>
 
               </div>
 
@@ -97,6 +127,6 @@
 
 @endsection
 @push('scripts')
-	<script src="js/pasaje.js"></script>
+	<script src="js/admin/pasaje.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">
